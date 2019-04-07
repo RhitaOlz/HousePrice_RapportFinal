@@ -1,0 +1,21 @@
+****** RandomForestRegressor *********
+Train score: 0.9732
+Validation score: 0.8291
+All training data score: 0.9460
+RandomForestRegressor score: 0.1496 (0.0085)
+RandomForestRegressor Training time: 0.17s
+
+****** GradientBoostingRegressor *********
+Train score: 0.9653
+Validation score: 0.8709
+All training data score: 0.9475
+GradientBoostingRegressor score: 0.1268 (0.0084)
+GradientBoostingRegressor Training time: 0.47s
+
+****** LGBMRegressor *********
+Train score: 0.9896
+Validation score: 0.8739
+All training data score: 0.9678
+LGBMRegressor score: 0.1344 (0.0080)
+LGBMRegressor Training time: 0.17s
+ mu = 12.01 and sigma = 0.39
