@@ -1,0 +1,32 @@
+sans log
+
+****** RandomForestRegressor *********
+Train score: 0.9663
+Validation score: 0.8745
+All training data score: 0.9481
+RandomForestRegressor score: 31337.3533 (5710.7691)
+
+****** GradientBoostingRegressor *********
+Train score: 0.9713
+Validation score: 0.9214
+All training data score: 0.9614
+GradientBoostingRegressor score: 25342.1112 (3014.4952)
+GradientBoostingRegressor Training time: 1.27s
+
+****** LGBMRegressor *********
+Train score: 0.9781
+Validation score: 0.9014
+All training data score: 0.9629
+LGBMRegressor score: 28307.2498 (4646.8666)
+LGBMRegressor Training time: 0.56s
+ mu = 177023.01 and sigma = 74674.70
+C:/Users/rhita/Desktop/MaîtriseAI/2. Traitement de données massives - Big data/Projet/GLO7029_01_H19-HousePricing-master/src/ModelsTraining.py:195: RuntimeWarning: overflow encountered in expm1
+  price_pred_dollars = [np.round(i, 9) for i in np.expm1(price_pred)]
+
+****** LGBMRegressor Optimisation *********
+Train score: 0.7584
+Validation score: 0.7436
+All training data score: 0.7555
+LGBMRegressor score: 41330.2139 (5017.4793)
+LGBMRegressor Training time: 0.32s
+ mu = 179327.14 and sigma = 46528.08

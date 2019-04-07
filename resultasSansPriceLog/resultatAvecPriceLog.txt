@@ -1,0 +1,32 @@
+Avec log
+
+****** RandomForestRegressor *********
+Train score: 0.9718
+Validation score: 0.8752
+All training data score: 0.9527
+RandomForestRegressor score: 0.1500 (0.0075)
+RandomForestRegressor Training time: 0.30s
+
+****** GradientBoostingRegressor *********
+Train score: 0.9594
+Validation score: 0.8962
+All training data score: 0.9469
+GradientBoostingRegressor score: 0.1264 (0.0085)
+GradientBoostingRegressor Training time: 1.32s
+
+****** LGBMRegressor *********
+Train score: 0.9884
+Validation score: 0.9034
+All training data score: 0.9716
+LGBMRegressor score: 0.1345 (0.0084)
+LGBMRegressor Training time: 0.34s
+ mu = 12.00 and sigma = 0.39
+
+****** LGBMRegressor Optimisation *********
+Train score: 0.7748
+Validation score: 0.7563
+All training data score: 0.7711
+LGBMRegressor score: 0.2066 (0.0106)
+LGBMRegressor Training time: 0.24s
+ mu = 12.02 and sigma = 0.24
+

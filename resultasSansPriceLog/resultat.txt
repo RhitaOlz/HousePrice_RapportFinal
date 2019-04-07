@@ -1,0 +1,77 @@
+Sans log
+
+****** RandomForestRegressor *********
+Train score: 0.9746
+Validation score: 0.8387
+All training data score: 0.9455
+RandomForestRegressor score: 30726.6884 (3322.7548)
+RandomForestRegressor Training time: 0.35s
+****** GradientBoostingRegressor *********
+Train score: 0.9725
+Validation score: 0.9138
+All training data score: 0.9599
+GradientBoostingRegressor score: 25341.1080 (3163.4467)
+GradientBoostingRegressor Training time: 1.52s
+****** LGBMRegressorInitial *********
+Train score: 0.9781
+Validation score: 0.8802
+All training data score: 0.9571
+LGBMRegressorInitial score: 28307.2498 (4646.8666)
+LGBMRegressorInitial Training time: 0.57s
+ mu = 178614.90 and sigma = 77283.00
+****** LGBMRegressor Optimisation *********
+[1]	valid_0's l2: 5.73348e+09	valid_0's l1: 52692.3
+Training until validation scores don't improve for 5 rounds.
+[2]	valid_0's l2: 4.87405e+09	valid_0's l1: 48389.1
+[3]	valid_0's l2: 4.16659e+09	valid_0's l1: 44609.5
+[4]	valid_0's l2: 3.59285e+09	valid_0's l1: 41185.4
+[5]	valid_0's l2: 3.10515e+09	valid_0's l1: 38100.9
+[6]	valid_0's l2: 2.71387e+09	valid_0's l1: 35243.4
+[7]	valid_0's l2: 2.39041e+09	valid_0's l1: 32729.5
+[8]	valid_0's l2: 2.16062e+09	valid_0's l1: 30619.3
+[9]	valid_0's l2: 1.92701e+09	valid_0's l1: 28783.2
+[10]	valid_0's l2: 1.7404e+09	valid_0's l1: 27060.9
+[11]	valid_0's l2: 1.58666e+09	valid_0's l1: 25508.6
+[12]	valid_0's l2: 1.45325e+09	valid_0's l1: 24268.6
+[13]	valid_0's l2: 1.36917e+09	valid_0's l1: 23325.6
+[14]	valid_0's l2: 1.28383e+09	valid_0's l1: 22427.2
+[15]	valid_0's l2: 1.20971e+09	valid_0's l1: 21630
+[16]	valid_0's l2: 1.15139e+09	valid_0's l1: 20992
+[17]	valid_0's l2: 1.10232e+09	valid_0's l1: 20331.9
+[18]	valid_0's l2: 1.06195e+09	valid_0's l1: 19780.8
+[19]	valid_0's l2: 1.03126e+09	valid_0's l1: 19313.4
+[20]	valid_0's l2: 9.96638e+08	valid_0's l1: 18908
+[21]	valid_0's l2: 9.72573e+08	valid_0's l1: 18608.8
+[22]	valid_0's l2: 9.49494e+08	valid_0's l1: 18240.3
+[23]	valid_0's l2: 9.28683e+08	valid_0's l1: 17992.3
+[24]	valid_0's l2: 9.09121e+08	valid_0's l1: 17725.3
+[25]	valid_0's l2: 8.92016e+08	valid_0's l1: 17551.9
+[26]	valid_0's l2: 8.80738e+08	valid_0's l1: 17371.8
+[27]	valid_0's l2: 8.70929e+08	valid_0's l1: 17249.3
+[28]	valid_0's l2: 8.61575e+08	valid_0's l1: 17146.7
+[29]	valid_0's l2: 8.53377e+08	valid_0's l1: 17053.9
+[30]	valid_0's l2: 8.45696e+08	valid_0's l1: 16907.8
+[31]	valid_0's l2: 8.39618e+08	valid_0's l1: 16826.8
+[32]	valid_0's l2: 8.33494e+08	valid_0's l1: 16726.8
+[33]	valid_0's l2: 8.31609e+08	valid_0's l1: 16733.9
+[34]	valid_0's l2: 8.26409e+08	valid_0's l1: 16709.3
+[35]	valid_0's l2: 8.22869e+08	valid_0's l1: 16707.9
+[36]	valid_0's l2: 8.21404e+08	valid_0's l1: 16731.2
+[37]	valid_0's l2: 8.1802e+08	valid_0's l1: 16737.8
+[38]	valid_0's l2: 8.15836e+08	valid_0's l1: 16744.8
+[39]	valid_0's l2: 8.1148e+08	valid_0's l1: 16683.9
+[40]	valid_0's l2: 8.09158e+08	valid_0's l1: 16688.6
+[41]	valid_0's l2: 8.0077e+08	valid_0's l1: 16628.3
+[42]	valid_0's l2: 8.0231e+08	valid_0's l1: 16667.5
+[43]	valid_0's l2: 8.0119e+08	valid_0's l1: 16671.5
+[44]	valid_0's l2: 8.01162e+08	valid_0's l1: 16677.3
+[45]	valid_0's l2: 7.97121e+08	valid_0's l1: 16686.8
+[46]	valid_0's l2: 7.94536e+08	valid_0's l1: 16684.2
+Early stopping, best iteration is:
+[41]	valid_0's l2: 8.0077e+08	valid_0's l1: 16628.3
+Train score: 0.9483
+Validation score: 0.8813
+All training data score: 0.9340
+LGBMRegressor score: 28307.2498 (4646.8666)
+LGBMRegressor Training time: 0.43s
+ mu = 178927.92 and sigma = 75654.45
