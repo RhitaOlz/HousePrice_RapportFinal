@@ -1,5 +1,4 @@
 import os
-import time
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -7,7 +6,6 @@ import seaborn as sns
 from DataStat import Handeler
 from pathlib import Path
 
-from sklearn.model_selection import train_test_split, StratifiedKFold, KFold, cross_val_score
 from sklearn.preprocessing import LabelEncoder
 from scipy import stats
 from scipy.stats import norm, skew
