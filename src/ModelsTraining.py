@@ -275,85 +275,78 @@ if __name__ == '__main__':
         price_obs = train_df.SalePrice.values
     train_df.drop(['SalePrice', 'SalePriceLog'], axis=1, inplace=True)
 
-    scores = {'trainScore' :[0], 'validScore':[0]}
-    i = 0
-    while(np.max(scores['validScore']) < 0.94):
-        if i > 20:
-            scores_df = pd.DataFrame(scores)
-            scores_df.to_csv(results_path+'/scores.csv')
-            print(scores_df)
-            break
-        i =+ 1
-        train_valid_X, train_valid_y = train_df, price_obs
-        train_X, valid_X, train_y, valid_y = train_test_split(train_valid_X, train_valid_y, train_size=.8)
+    train_valid_X, train_valid_y = train_df, price_obs
+    train_X, valid_X, train_y, valid_y = train_test_split(train_valid_X, train_valid_y, train_size=.8)
 
-        features_name = np.array(train_df.keys())
+    features_name = np.array(train_df.keys())
 
-        ##### Random Forest Regressor Model ####
-        model_params = {'n_estimators': 100}
-        model = RandomForestRegressor(**model_params)
-        model_name = 'Random Forest Regressor Model'
-        price_pred, train_score, valid_score = modelTraining(model, model_name, features_name, train_X, train_y, valid_X, valid_y, test_df.values, results_path)
-        scores['trainScore'].append(train_score)
-        scores['validScore'].append(valid_score)
-        #trainingDeviance_Plot(model, model_params, model_name, valid_X, valid_y, results_path='../resultsGraphs')
+    ##### Random Forest Regressor Model ####
+    model_params = {'n_estimators': 100}
+    model = RandomForestRegressor(**model_params)
+    model_name = 'Random Forest Regressor Model'
+    price_pred, train_score, valid_score = modelTraining(model, model_name, features_name, train_X, train_y, valid_X,
+                                                         valid_y, test_df.values, results_path)
 
-        # Optimisation
-        model_name = 'Random Forest Regressor Model White Importent Fetures'
-        impFeautures = SelectFromModel(model, prefit=True)
-        train_X_new = impFeautures.transform(train_X)
-        valid_X_new = impFeautures.transform(valid_X)
-        test_X_new = impFeautures.transform(test_df)
+    # trainingDeviance_Plot(model, model_params, model_name, valid_X, valid_y, results_path='../resultsGraphs')
 
-        print('New train_X shape {}'.format(train_X_new.shape))
-        price_pred = modelOptimumTraining(model, model_name, features_name, train_X_new, train_y, valid_X_new, valid_y, test_X_new,
-                                   results_optim_path)
+    # Optimisation
+    model_name = 'Random Forest Regressor Model White Importent Fetures'
+    impFeautures = SelectFromModel(model, prefit=True)
+    train_X_new = impFeautures.transform(train_X)
+    valid_X_new = impFeautures.transform(valid_X)
+    test_X_new = impFeautures.transform(test_df)
 
-        ##### Gradient Boosting Regressor Model ####
+    print('New train_X shape {}'.format(train_X_new.shape))
+    price_pred = modelOptimumTraining(model, model_name, features_name, train_X_new, train_y, valid_X_new, valid_y,
+                                      test_X_new,
+                                      results_optim_path)
 
-        model_params = {'n_estimators': 100}
-        model = GradientBoostingRegressor(**model_params)
-        model_name = 'Gradient Boosting Regressor Model'
-        features = train_df.keys()
-        price_pred, train_score, valid_score = modelTraining(model, model_name, features, train_X, train_y, valid_X, valid_y, test_df, results_path)
-        trainingDeviance_Plot(model, model_params, model_name, valid_X, valid_y, results_path='../resultsGraphs')
-        scores['trainScore'].append(train_score)
-        scores['validScore'].append(valid_score)
+    ##### Gradient Boosting Regressor Model ####
 
-        # Optimisation
-        model_name = 'Gradient Boosting Regressor Model White Importent Fetures'
-        impFeautures = SelectFromModel(model, prefit=True)
-        train_X_new = impFeautures.transform(train_X)
-        valid_X_new = impFeautures.transform(valid_X)
-        test_X_new = impFeautures.transform(test_df)
+    model_params = {'n_estimators': 100}
+    model = GradientBoostingRegressor(**model_params)
+    model_name = 'Gradient Boosting Regressor Model'
+    features = train_df.keys()
+    price_pred, train_score, valid_score = modelTraining(model, model_name, features, train_X, train_y, valid_X,
+                                                         valid_y, test_df, results_path)
+    trainingDeviance_Plot(model, model_params, model_name, valid_X, valid_y, results_path='../resultsGraphs')
 
-        print('New train_X shape {}'.format(train_X_new.shape))
-        price_pred = modelOptimumTraining(model, model_name, features_name, train_X_new, train_y, valid_X_new, valid_y, test_X_new,
-                                   results_optim_path)
-        #GradientBoostingRegressor_Plots(train_X, train_y, valid_X, valid_y, train_df.keys())
+    # Optimisation
+    model_name = 'Gradient Boosting Regressor Model White Importent Fetures'
+    impFeautures = SelectFromModel(model, prefit=True)
+    train_X_new = impFeautures.transform(train_X)
+    valid_X_new = impFeautures.transform(valid_X)
+    test_X_new = impFeautures.transform(test_df)
 
-        ##### Light Gradient Boosting Machine Model ####
+    print('New train_X shape {}'.format(train_X_new.shape))
+    price_pred = modelOptimumTraining(model, model_name, features_name, train_X_new, train_y, valid_X_new, valid_y,
+                                      test_X_new,
+                                      results_optim_path)
+    # GradientBoostingRegressor_Plots(train_X, train_y, valid_X, valid_y, train_df.keys())
 
-        model_params = {'n_estimators': 100}
-        model = lgbm.LGBMRegressor(**model_params)
-        model_name = 'Light Gradient Boosting Regressor Model'
-        features = train_df.keys()
-        price_pred, train_score, valid_score = modelTraining(model, model_name, features, train_X, train_y, valid_X, valid_y, test_df, results_path)
-        scores['trainScore'].append(train_score)
-        scores['validScore'].append(valid_score)
-        #trainingDeviance_Plot(model, model_params, model_name, valid_X, valid_y, results_path='../resultsGraphs')
-        #distribution_Plots(price_pred, title='PredictedSalePrice', results_path='../resultsGraphs')
+    ##### Light Gradient Boosting Machine Model ####
 
-        # Optimisation
-        model_name = 'Light Gradient Boosting Regressor Model White Importent Fetures'
-        impFeautures = SelectFromModel(model, prefit=True)
-        train_X_new = impFeautures.transform(train_X)
-        valid_X_new = impFeautures.transform(valid_X)
-        test_X_new = impFeautures.transform(test_df)
+    model_params = {'n_estimators': 100}
+    model = lgbm.LGBMRegressor(**model_params)
+    model_name = 'Light Gradient Boosting Regressor Model'
+    features = train_df.keys()
+    price_pred, train_score, valid_score = modelTraining(model, model_name, features, train_X, train_y, valid_X,
+                                                         valid_y, test_df, results_path)
 
-        print('New train_X shape {}'.format(train_X_new.shape))
-        price_pred = modelOptimumTraining(model, model_name, features_name, train_X_new, train_y, valid_X_new, valid_y, test_X_new,
-                                   results_optim_path)
+    # trainingDeviance_Plot(model, model_params, model_name, valid_X, valid_y, results_path='../resultsGraphs')
+    # distribution_Plots(price_pred, title='PredictedSalePrice', results_path='../resultsGraphs')
+
+    # Optimisation
+    model_name = 'Light Gradient Boosting Regressor Model White Importent Fetures'
+    impFeautures = SelectFromModel(model, prefit=True)
+    train_X_new = impFeautures.transform(train_X)
+    valid_X_new = impFeautures.transform(valid_X)
+    test_X_new = impFeautures.transform(test_df)
+
+    print('New train_X shape {}'.format(train_X_new.shape))
+    price_pred = modelOptimumTraining(model, model_name, features_name, train_X_new, train_y, valid_X_new, valid_y,
+                                      test_X_new,
+                                      results_optim_path)
 
     ##### Light Gradient Boosting Machine Model Optimisation ####
     '''
