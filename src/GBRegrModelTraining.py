@@ -8,6 +8,7 @@ from pathlib import Path
 
 # Modelling Algorithms
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
+from sklearn.model_selection import ShuffleSplit, GridSearchCV
 import lightgbm as lgbm
 from sklearn.feature_selection import SelectFromModel
 
@@ -81,7 +82,7 @@ if __name__ == '__main__':
     train_score_l = []
     valid_score_l = []
     i = 0
-    itr = 500
+    itr = 1 #100
     for i in range(itr):
         train_valid_X, train_valid_y = train_df, price_obs
         train_X, valid_X, train_y, valid_y = train_test_split(train_valid_X, train_valid_y, train_size=.8)
@@ -89,6 +90,7 @@ if __name__ == '__main__':
         features_name = np.array(train_df.keys())
 
         model_params = {'n_estimators': 100}
+
         model = GradientBoostingRegressor(**model_params)
         model_name = 'Gradient Boosting Regressor Model'
         features = train_df.keys()

@@ -8,6 +8,7 @@ from pathlib import Path
 
 # Modelling Algorithms
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
+import xgboost as xgb
 import lightgbm as lgbm
 from sklearn.feature_selection import SelectFromModel
 
@@ -125,7 +126,7 @@ def trainingDeviance_Plot(model, params, model_name, valid_X, valid_y, results_p
     # compute test set deviance
     test_score = np.zeros((params['n_estimators'],), dtype=np.float64)
 
-    if model_name == 'Random Forest Regressor Model':
+    if model_name in ['Random Forest Regressor Model', 'XGboostingModel']:
         y_preds = model.predict(valid_X)
         for i, y_pred in enumerate(y_preds):
             test_score[i] = model.loss(valid_y, y_pred)
@@ -266,8 +267,8 @@ if __name__ == '__main__':
     distribution_Plots(train_df['SalePriceLog'], title='SalePriceLog', results_path='../resultsGraphs')
 
     # ------------ Prediction Model -----------------------------
-    log = False
-    print('log'.format(log))
+    log = True
+    print('log = {}'.format(log))
     # Data split to train and validation data
     if log is True:
         price_obs = train_df.SalePriceLog.values
@@ -279,6 +280,31 @@ if __name__ == '__main__':
     train_X, valid_X, train_y, valid_y = train_test_split(train_valid_X, train_valid_y, train_size=.8)
 
     features_name = np.array(train_df.keys())
+
+    '''    
+    ##### XGboosting Model ####
+
+    model_params = {'n_estimators': 100}
+    model = xgb.XGBClassifier(objective="binary:logistic", random_state=42)
+    model_name = 'XGboostingModel'
+    features = train_df.keys()
+    price_pred, train_score, valid_score = modelOptimumTraining(model, model_name, features, train_X, train_y, valid_X,
+                                                         valid_y, test_df, results_path)
+    trainingDeviance_Plot(model, model_params, model_name, valid_X, valid_y, results_path='../resultsGraphs')
+
+    # Optimisation
+    model_name = 'XGboosting Model White Importent Fetures'
+    impFeautures = SelectFromModel(model, prefit=True)
+    train_X_new = impFeautures.transform(train_X)
+    valid_X_new = impFeautures.transform(valid_X)
+    test_X_new = impFeautures.transform(test_df)
+
+    print('New train_X shape {}'.formatstaged_predict(train_X_new.shape))
+    price_pred = modelOptimumTraining(model, model_name, features_name, train_X_new, train_y, valid_X_new, valid_y,
+                                      test_X_new,
+                                      results_optim_path)
+    
+    '''
 
     ##### Random Forest Regressor Model ####
     model_params = {'n_estimators': 100}
@@ -383,6 +409,7 @@ if __name__ == '__main__':
 
     #distribution_Plots(price_pred, title='PredictedSalePrice', results_path='../resultsGraphs')
     '''
+
 
     #plt.show()
 
