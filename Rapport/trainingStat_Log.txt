@@ -1,0 +1,53 @@
+log = True
+
+Feature selection from model
+new features shape (1168, 16)
+
+****** Random Forest Regressor Model *********
+Train score: 0.9829
+Validation score: 0.8640
+All training data score: 0.9615
+Random Forest Regressor Model score: 0.1441 (0.0074)
+Random Forest Regressor Model time: 1.72s
+New train_X shape (1168, 16)
+Feature selection from model
+new features shape (1168, 2)
+
+****** Random Forest Regressor Model White Importent Fetures *********
+Train score: 0.9813
+Validation score: 0.8694
+Random Forest Regressor Model White Importent Fetures time: 0.49s
+Feature selection from model
+new features shape (1168, 16)
+
+****** Gradient Boosting Regressor Model *********
+Train score: 0.9642
+Validation score: 0.8979
+All training data score: 0.9523
+Gradient Boosting Regressor Model score: 0.1264 (0.0084)
+Gradient Boosting Regressor Model time: 0.47s
+New train_X shape (1168, 16)
+Feature selection from model
+new features shape (1168, 2)
+
+****** Gradient Boosting Regressor Model White Importent Fetures *********
+Train score: 0.9518
+Validation score: 0.8943
+Gradient Boosting Regressor Model White Importent Fetures time: 0.10s
+Feature selection from model
+new features shape (1168, 46)
+
+****** Light Gradient Boosting Regressor Model *********
+Train score: 0.9890
+Validation score: 0.8807
+All training data score: 0.9695
+Light Gradient Boosting Regressor Model score: 0.1345 (0.0084)
+Light Gradient Boosting Regressor Model time: 0.25s
+New train_X shape (1168, 46)
+Feature selection from model
+new features shape (1168, 18)
+
+****** Light Gradient Boosting Regressor Model White Importent Fetures *********
+Train score: 0.9874
+Validation score: 0.8837
+Light Gradient Boosting Regressor Model White Importent Fetures time: 0.13s
